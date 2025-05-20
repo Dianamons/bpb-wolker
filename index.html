@@ -1,299 +1,168 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Produk - Mirip Shopee</title>
+    <title>ShopNow</title>
     <style>
-        /* Reset CSS */
-        body,
-        h1,
-        h2,
-        h3,
-        p,
-        ul,
-        li {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
             margin: 0;
             padding: 0;
         }
-
-        /* Navbar */
-        .navbar {
+        .header {
             background-color: #ff6f61;
             padding: 15px;
             color: white;
             text-align: center;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
-
-        .navbar h1 {
-            font-size: 1.5em;
-        }
-
         .search-bar {
+            margin: 10px;
             display: flex;
-            align-items: center;
+            justify-content: center;
         }
-
-        .search-bar input[type="text"] {
-            padding: 8px;
+        .search-bar input {
+            width: 70%;
+            padding: 10px;
             border: none;
             border-radius: 5px;
-            margin-right: 5px;
         }
-
         .search-bar button {
-            background-color: #e55a50;
-            color: white;
+            padding: 10px;
+            background-color: white;
+            color: #ff6f61;
             border: none;
             border-radius: 5px;
-            padding: 8px 12px;
             cursor: pointer;
         }
-
-        /* Container */
-        .container {
-            max-width: 1200px;            margin: auto;
-            padding: 20px;
-        }
-
-        /* Categories */
         .categories {
             display: flex;
             justify-content: space-around;
-            margin-bottom: 20px;
+            padding: 10px 0;
         }
-
         .category {
             text-align: center;
         }
-
         .category img {
             width: 50px;
             height: 50px;
-            border-radius: 50%;
-            margin-bottom: 5px;
         }
-
-        /* Carousel */
-        .carousel {            overflow: hidden;
-            position: relative;
-            margin-bottom: 20px;
+        .discount-banner {
+            background-color: orange;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin: 10px;
+            border-radius: 5px;
         }
-
-        .carousel-wrapper {
+        .flash-sale {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            justify-content: center;
+            padding: 20px 0;
         }
-
-        .carousel-item {
-            min-width: 100%;
-            box-sizing: border-box;
+        .flash-sale-timer {
+            font-size: 1.5em;
+            margin: 0 10px;
         }
-
-        .carousel-item img {
-            width: 100%;
-            display: block;
-        }
-
-        /* Product Grid */
-        .product-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-
         .product-card {
-            background-color: #fff;
+            background-color: white;
             border: 1px solid #ddd;
             border-radius: 5px;
-            padding: 15px;
             margin: 10px;
-            width: calc(33.333% - 20px);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
+            padding: 10px;
+            position: relative;
         }
-
-        .product-card:hover {
-            transform: scale(1.02);
+        .discount-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: red;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
         }
-
-        .product-img {
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: white;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
             width: 100%;
-            border-radius: 5px;
+            box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
         }
-
-        .product-name {
-            font-size: 1.2em;
-            margin: 10px 0;
-        }
-
-        .product-price {
-            color: #ff6f61;
-            font-weight: bold;
-        }
-
-        .buy-button {
-            background-color: #ff6f61;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 15px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        .navbar div {
             text-align: center;
-            display: inline-block;
-        }
-
-        .buy-button:hover {
-            background-color: #e55a50;
-        }
-
-        /* Footer */
-        .footer {            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .product-card {
-                width: calc(50% - 20px);
-                /* Dua produk dalam satu baris di layar kecil */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .product-card {
-                width: calc(100% - 20px);
-                /* Satu produk dalam satu baris di layar sangat kecil */
-            }
-
-            .categories {
-                flex-wrap: wrap;
-            }
-
-            .category {
-                width: 50%;
-                margin-bottom: 10px;
-            }
         }
     </style>
 </head>
-
 <body>
 
-    <!-- Navbar -->
+    <div class="header">
+        <h1>ShopNow</h1>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Cari produk...">
+        <button>Cari</button>
+    </div>
+
+    <div class="categories">
+        <div class="category">
+            <img src="https://via.placeholder.com/50" alt="Elektronik">
+            <p>Elektronik</p>
+        </div>
+        <div class="category">
+            <img src="https://via.placeholder.com/50" alt="Fashion">
+            <p>Fashion</p>
+        </div>
+        <div class="category">
+            <img src="https://via.placeholder.com/50" alt="Makanan">
+            <p>Makanan</p>
+        </div>
+        <div class="category">
+            <img src="https://via.placeholder.com/50" alt="Rumah">
+            <p>Rumah</p>
+        </div>
+        <div class="category">
+            <img src="https://via.placeholder.com/50" alt="Kesehatan">
+            <p>Kesehatan</p>
+        </div>
+    </div>
+
+    <div class="discount-banner">
+        <h2>Diskon Besar-Besaran!</h2>
+        <p>Dapatkan diskon hingga 70% untuk produk pilihan</p>
+        <button>Belanja Sekarang</button>
+    </div>
+
+    <div class="flash-sale">
+        <div class="flash-sale-timer">Flash Sale</div>
+        <div class="flash-sale-timer">01:45:22</div>
+    </div>
+
+    <div class="product-card">
+        <div class="discount-label">50%</div>
+        <img src="https://via.placeholder.com/150" alt="Produk 1" style="width: 100%; border-radius: 5px;">
+        <h3>Nama Produk 1</h3>
+        <p>Rp 100.000</p>
+    </div>
+
+    <div class="product-card">
+        <div class="discount-label">40%</div>
+        <img src="https://via.placeholder.com/150" alt="Produk 2" style="width: 100%; border-radius: 5px;">
+        <h3>Nama Produk 2</h3>
+        <p>Rp 200.000</p>
+    </div>
+
     <div class="navbar">
-        <h1>Shopee Clone</h1>
-        <div class="search-bar">
-            <input type="text" placeholder="Cari produk...">
-            <button>Cari</button>
-        </div>
-    </div>
-
-    <!-- Container -->
-    <div class="container">
-
-        <!-- Categories -->
-        <div class="categories">
-            <div class="category">
-                <img src="https://via.placeholder.com/50" alt="Fashion">
-                <p>Fashion</p>
-            </div>
-            <div class="category">
-                <img src="https://via.placeholder.com/50" alt="Elektronik">
-                <p>Elektronik</p>
-            </div>
-            <div class="category">
-                <img src="https://via.placeholder.com/50" alt="Rumah Tangga">
-                <p>Rumah Tangga</p>
-            </div>
-            <div class="category">
-                <img src="https://via.placeholder.com/50" alt="Kecantikan">
-                <p>Kecantikan</p>
-            </div>
-        </div>
-
-        <!-- Carousel -->
-        <div class="carousel">
-            <div class="carousel-wrapper">
-                <div class="carousel-item">
-                    <img src="https://via.placeholder.com/1200x300" alt="Promo 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://via.placeholder.com/1200x300" alt="Promo 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://via.placeholder.com/1200x300" alt="Promo 3">
-                </div>
-            </div>
-        </div>
-
-        <!-- Product Grid -->
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300" alt="Nama Produk" class="product-img">
-                <div class="product-name">Nama Produk 1</div>
-                <div class="product-price">Rp 100.000</div>
-                <button class="buy-button">Beli Sekarang</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300" alt="Nama Produk" class="product-img">
-                <div class="product-name">Nama Produk 2</div>
-                <div class="product-price">Rp 200.000</div>
-                <button class="buy-button">Beli Sekarang</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300" alt="Nama Produk" class="product-img">
-                <div class="product-name">Nama Produk 3</div>
-                <div class="product-price">Rp 150.000</div>
-                <button class="buy-button">Beli Sekarang</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300" alt="Nama Produk" class="product-img">
-                <div class="product-name">Nama Produk 4</div>
-                <div class="product-price">Rp 250.000</div>
-                <button class="buy-button">Beli Sekarang</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300" alt="Nama Produk" class="product-img">
-                <div class="product-name">Nama Produk 5</div>
-                <div class="product-price">Rp 120.000</div>
-                <button class="buy-button">Beli Sekarang</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300" alt="Nama Produk" class="product-img">
-                <div class="product-name">Nama Produk 6</div>
-                <div class="product-price">Rp 180.000</div>
-                <button class="buy-button">Beli Sekarang</button>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-        <p>&copy; 2024 Shopee Clone. All rights reserved.</p>
+        <div>Beranda</div>
+        <div>Kategori</div>
+        <div>Keranjang</div>
+        <div>Notifikasi</div>
+        <div>Akun</div>
     </div>
 
 </body>
-
 </html>
