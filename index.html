@@ -4,225 +4,194 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MakanEnak</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #fff8e7;
-      color: #333;
-      padding-bottom: 70px;
-    }
-
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: linear-gradient(to right, #f78c1e, #ff5722);
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+    body { background: #fff8ec; padding-bottom: 70px; }
+    header {
+      background: linear-gradient(90deg, #ff9d2f, #ff6126);
       color: white;
-      padding: 1rem;
-      border-bottom-left-radius: 16px;
-      border-bottom-right-radius: 16px;
+      padding: 20px;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
     }
-
-    .logo {
-      font-size: 1.2rem;
+    header h1 { font-size: 20px; margin-bottom: 5px; }
+    .search {
+      margin: 15px;
+      background: white;
+      border-radius: 30px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .search input {
+      border: none;
+      outline: none;
+      flex: 1;
+      font-size: 14px;
+    }
+    .kategori, .promo, .produk { margin: 15px; }
+    .kategori h2, .promo h2, .produk h2 { margin-bottom: 10px; font-size: 16px; }
+    .kategori button {
+      margin-right: 10px;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 20px;
+      background: #fff;
+      color: #ff7b00;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .kategori button.active {
+      background: #ff7b00;
+      color: white;
+    }
+    .promo .card {
+      background: linear-gradient(90deg, #ff884d, #ff3c00);
+      border-radius: 15px;
+      color: white;
+      padding: 15px;
+      margin-bottom: 10px;
+    }
+    .promo .card button {
+      margin-top: 10px;
+      background: white;
+      color: #ff3c00;
+      border: none;
+      padding: 6px 15px;
+      border-radius: 20px;
       font-weight: bold;
     }
-
-    .icons {
-      display: flex;
-      gap: 1rem;
+    .produk-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
     }
-
-    .icons span {
-      background: rgba(255,255,255,0.3);
+    .produk-card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      overflow: hidden;
+      padding: 10px;
+    }
+    .produk-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .produk-card h3 {
+      font-size: 14px;
+      margin: 8px 0 2px;
+    }
+    .produk-card .rating { font-size: 12px; color: #666; }
+    .produk-card .harga {
+      color: #ff7b00;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+    .produk-card .beli {
+      margin-top: 8px;
+      background: #ff7b00;
+      color: white;
+      border: none;
       border-radius: 50%;
-      width: 24px;
-      height: 24px;
+      width: 30px;
+      height: 30px;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 0.8rem;
-    }
-
-    main {
-      padding: 1rem;
-    }
-
-    .welcome h1 {
-      font-size: 1.5rem;
-      margin: 0;
-    }
-
-    .welcome p {
-      margin-top: 0.3rem;
-      color: #555;
-    }
-
-    .search {
-      width: 100%;
-      margin-top: 1rem;
-      padding: 0.6rem;
-      border-radius: 999px;
-      border: none;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .kategori h2,
-    .promo h2 {
-      margin-top: 2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .btn-group {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .btn-group button {
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 999px;
-      background: white;
-      color: #f78c1e;
-      font-weight: bold;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      font-size: 20px;
       cursor: pointer;
     }
-
-    .btn-group .active {
-      background: #f78c1e;
-      color: white;
-    }
-
-    .promo-card {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: linear-gradient(to right, #ff512f, #f09819);
-      color: white;
-      padding: 1rem;
-      border-radius: 16px;
-      margin-top: 0.5rem;
-    }
-
-    .promo-card .use-btn {
-      background: white;
-      color: #f78c1e;
-      border: none;
-      padding: 0.4rem 0.8rem;
-      border-radius: 999px;
-      cursor: pointer;
-      margin-top: 0.5rem;
-    }
-
-    .promo-card .icon {
-      font-size: 2rem;
-      opacity: 0.7;
-    }
-
-    .bottom-nav {
+    nav {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
+      background: white;
+      border-top: 1px solid #ddd;
       display: flex;
       justify-content: space-around;
-      background: white;
-      padding: 0.6rem 0;
-      border-top: 1px solid #ddd;
-      box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
+      padding: 10px 0;
     }
-
-    .bottom-nav a {
-      text-decoration: none;
-      color: #888;
-      font-size: 0.75rem;
+    nav a {
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      font-size: 12px;
+      color: #888;
+      text-decoration: none;
     }
-
-    .bottom-nav .icon {
-      width: 24px;
-      height: 24px;
-      margin-bottom: 4px;
-      stroke-width: 2;
+    nav a.active {
+      color: #ff7b00;
     }
-
-    .bottom-nav a.active {
-      color: #f78c1e;
+    .tambah-produk {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .tambah-produk button {
+      padding: 10px 20px;
+      border: none;
+      background: #ff7b00;
+      color: white;
       font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <header class="top-bar">
-    <div class="logo">★ MakanEnak</div>
-    <div class="icons">
-      <span>2</span>
-      <span>0</span>
-    </div>
+  <header>
+    <h1>Selamat Datang! <span>👋</span></h1>
+    <p>Mau makan apa hari ini?</p>
   </header>
 
-  <main>
-    <section class="welcome">
-      <h1>Selamat Datang! <span class="wave">👋</span></h1>
-      <p>Mau makan apa hari ini?</p>
-      <input type="text" placeholder="Cari makanan favorit..." class="search" />
-    </section>
+  <div class="search">
+    <input type="text" placeholder="Cari makanan favorit...">
+  </div>
 
-    <section class="kategori">
-      <h2>Kategori</h2>
-      <div class="btn-group">
-        <button class="active">Semua</button>
-        <button>Sarapan</button>
-        <button>Makan Siang</button>
+  <div class="kategori">
+    <h2>Kategori</h2>
+    <button class="active">Semua</button>
+    <button>Sarapan</button>
+    <button>Makan Siang</button>
+  </div>
+
+  <div class="promo">
+    <h2>Promo Spesial</h2>
+    <div class="card">
+      <p><strong>Diskon 30%</strong><br>Untuk pembelian pertama</p>
+      <button>Gunakan</button>
+    </div>
+  </div>
+
+  <div class="produk">
+    <h2>Menu Populer</h2>
+    <div class="produk-grid">
+      <div class="produk-card">
+        <img src="https://via.placeholder.com/150" alt="Makanan" />
+        <h3>Nasi Goreng Spesial</h3>
+        <p class="rating">⭐ 4.8 (120+)</p>
+        <p class="harga">Rp25.000</p>
+        <button class="beli">+</button>
       </div>
-    </section>
-
-    <section class="promo">
-      <h2>Promo Spesial</h2>
-      <div class="promo-card">
-        <div>
-          <h3>Diskon 30%</h3>
-          <p>Untuk pembelian pertama</p>
-          <button class="use-btn">Gunakan</button>
-        </div>
-        <div class="icon">&#128176;</div>
+      <div class="produk-card">
+        <img src="https://via.placeholder.com/150" alt="Makanan" />
+        <h3>Ayam Bakar Madu</h3>
+        <p class="rating">⭐ 4.9 (200+)</p>
+        <p class="harga">Rp27.000</p>
+        <button class="beli">+</button>
       </div>
-    </section>
-  </main>
+    </div>
+  </div>
 
-  <nav class="bottom-nav">
-    <a href="#" class="active">
-      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M4 10v10a1 1 0 001 1h4m10-11v10a1 1 0 01-1 1h-4m-4 0v-4h4v4" />
-      </svg>
-      <span>Beranda</span>
-    </a>
-    <a href="#">
-      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <circle cx="11" cy="11" r="8" />
-        <line x1="21" y1="21" x2="16.65" y2="16.65" />
-      </svg>
-      <span>Cari</span>
-    </a>
-    <a href="#">
-      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path d="M3 3h18v2H3V3zm2 4h14v13a1 1 0 01-1 1H6a1 1 0 01-1-1V7z" />
-      </svg>
-      <span>Pesanan</span>
-    </a>
-    <a href="#">
-      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <circle cx="12" cy="8" r="4" />
-        <path d="M6 20v-2a6 6 0 0112 0v2" />
-      </svg>
-      <span>Profil</span>
-    </a>
+  <nav>
+    <a href="#" class="active">Beranda<br>🏠</a>
+    <a href="#">Cari<br>🔍</a>
+    <a href="#">Pesanan<br>🛍️</a>
+    <a href="#">Profil<br>👤</a>
   </nav>
+
+  <div class="tambah-produk">
+    <button>+ Tambah Produk</button>
+  </div>
 </body>
-</html>
+</html
