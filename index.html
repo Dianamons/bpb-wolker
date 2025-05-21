@@ -1,112 +1,135 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daftar Produk</title>
+  <title>FreshMart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
       margin: 0;
       padding: 0;
-      background-color: #f5f5f5;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
-    .produk-container {
-      max-width: 600px;
-      margin: 20px auto;
-      padding: 10px;
+    body {
+      background: #f7f7f7;
     }
-    .produk-card {
-      background-color: #fff;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      padding: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .produk-info {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex: 1;
-    }
-    .produk-info img {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: 5px;
-    }
-    .produk-text {
-      flex: 1;
-    }
-    .produk-text h4 {
-      margin: 0 0 5px;
-      font-size: 16px;
-    }
-    .produk-text p {
-      margin: 0;
-      font-size: 14px;
-      color: #555;
-    }
-    .produk-harga {
-      font-weight: bold;
-      margin-top: 5px;
-      color: #000;
-    }
-    .beli-button {
-      background-color: #28a745;
+    .header {
+      background: #2f7a2d;
       color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .header .item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       font-size: 14px;
-      white-space: nowrap;
+    }
+    .logo {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      padding: 10px 0;
+    }
+    .logo span {
+      color: orange;
+    }
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+    .search-bar input {
+      width: 80%;
+      padding: 10px;
+      border-radius: 8px 0 0 8px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+    .search-bar button {
+      padding: 10px 15px;
+      border: none;
+      background: #2f7a2d;
+      color: white;
+      border-radius: 0 8px 8px 0;
+    }
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      padding: 10px;
+      font-size: 14px;
+    }
+    .cart {
+      text-align: center;
+      padding: 10px;
+      position: relative;
+    }
+    .cart span {
+      background: orange;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 12px;
+      position: absolute;
+      top: 5px;
+      right: 100px;
+    }
+    .banner {
+      background: url('https://via.placeholder.com/600x200?text=Sayur+Segar') center/cover;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 1px 1px 4px #000;
+      flex-direction: column;
+      padding: 20px;
+    }
+    .banner button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: white;
+      color: green;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <div class="produk-container"><!-- Produk 1 -->
-<div class="produk-card">
-  <div class="produk-info">
-    <img src="https://via.placeholder.com/60" alt="Produk 1">
-    <div class="produk-text">
-      <h4>Produk A</h4>
-      <p>Deskripsi singkat produk A.</p>
-      <div class="produk-harga">Rp10.000</div>
-    </div>
+  <div class="header">
+    <div class="item">🛍️ Become a Seller</div>
+    <div class="item">📲 Download App</div>
+    <div class="item">🔔 Notifications</div>
   </div>
-  <a class="beli-button" href="https://wa.me/6285723657734?text=Halo%20saya%20mau%20beli%20Produk%20A">Beli</a>
-</div>
-
-<!-- Produk 2 -->
-<div class="produk-card">
-  <div class="produk-info">
-    <img src="https://via.placeholder.com/60" alt="Produk 2">
-    <div class="produk-text">
-      <h4>Produk B</h4>
-      <p>Deskripsi singkat produk B.</p>
-      <div class="produk-harga">Rp6.000</div>
-    </div>
+  <div class="logo">Fresh<span>Mart</span></div>
+  <div class="search-bar">
+    <input type="text" placeholder="Search for fresh vegetables">
+    <button>🔍</button>
   </div>
-  <a class="beli-button" href="https://wa.me/6285723657734?text=Halo%20saya%20mau%20beli%20Produk%20B">Beli</a>
-</div>
-
-<!-- Produk 3 -->
-<div class="produk-card">
-  <div class="produk-info">
-    <img src="https://via.placeholder.com/60" alt="Produk 3">
-    <div class="produk-text">
-      <h4>Produk C</h4>
-      <p>Deskripsi singkat produk C.</p>
-      <div class="produk-harga">Rp3.000</div>
-    </div>
+  <div class="categories">
+    <div>Vegetables</div>
+    <div>Fresh Fish</div>
+    <div>Spices</div>
+    <div>Fruits</div>
+    <div>Ready Meals</div>
   </div>
-  <a class="beli-button" href="https://wa.me/6285723657734?text=Halo%20saya%20mau%20beli%20Produk%20C">Beli</a>
-</div>
-
+  <div class="cart">
+    <span>3</span>
+    <div>🛒 Cart</div>
+  </div>
+  <div class="banner">
+    <h2>Fresh Vegetables</h2>
+    <p>Farm-fresh vegetables delivered to your doorstep</p>
+    <button onclick="window.location.href='https://wa.me/6285723657734'">Shop Now</button>
   </div>
 </body>
 </html>
