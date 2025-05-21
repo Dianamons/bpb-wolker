@@ -2,196 +2,206 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MakanEnak</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-    body { background: #fff8ec; padding-bottom: 70px; }
-    header {
-      background: linear-gradient(90deg, #ff9d2f, #ff6126);
-      color: white;
-      padding: 20px;
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      background: #fff9f0;
     }
-    header h1 { font-size: 20px; margin-bottom: 5px; }
-    .search {
-      margin: 15px;
-      background: white;
-      border-radius: 30px;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .search input {
-      border: none;
-      outline: none;
-      flex: 1;
-      font-size: 14px;
-    }
-    .kategori, .promo, .produk { margin: 15px; }
-    .kategori h2, .promo h2, .produk h2 { margin-bottom: 10px; font-size: 16px; }
-    .kategori button {
-      margin-right: 10px;
-      padding: 8px 15px;
-      border: none;
-      border-radius: 20px;
-      background: #fff;
-      color: #ff7b00;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    .kategori button.active {
-      background: #ff7b00;
-      color: white;
-    }
-    .promo .card {
-      background: linear-gradient(90deg, #ff884d, #ff3c00);
-      border-radius: 15px;
+
+    .navbar {
+      background: linear-gradient(to right, #ff7e00, #ff6600);
       color: white;
       padding: 15px;
-      margin-bottom: 10px;
+      font-size: 20px;
     }
-    .promo .card button {
-      margin-top: 10px;
-      background: white;
-      color: #ff3c00;
+
+    .welcome {
+      padding: 10px 15px;
+    }
+
+    input[type="text"], input[type="number"] {
+      display: block;
+      width: 90%;
+      margin: 10px auto;
+      padding: 8px;
+      border-radius: 10px;
       border: none;
-      padding: 6px 15px;
+      box-shadow: 0 0 5px #ccc;
+    }
+
+    .kategori {
+      display: flex;
+      gap: 10px;
+      padding: 0 15px 10px;
+    }
+
+    .kategori button {
+      border: none;
       border-radius: 20px;
-      font-weight: bold;
-    }
-    .produk-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
-    .produk-card {
+      padding: 8px 15px;
       background: #fff;
-      border-radius: 15px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      overflow: hidden;
-      padding: 10px;
+      color: #ff7e00;
+      box-shadow: 0 0 5px #ccc;
     }
-    .produk-card img {
-      width: 100%;
+
+    .kategori .aktif {
+      background: #ff7e00;
+      color: white;
+    }
+
+    .produk-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      padding: 15px;
+    }
+
+    .produk {
+      background: white;
+      border-radius: 15px;
+      padding: 10px;
+      box-shadow: 0 0 10px #ddd;
+      text-align: center;
+    }
+
+    .produk img {
+      max-width: 100%;
       border-radius: 10px;
     }
-    .produk-card h3 {
-      font-size: 14px;
-      margin: 8px 0 2px;
+
+    .produk h4 {
+      margin: 10px 0 5px;
     }
-    .produk-card .rating { font-size: 12px; color: #666; }
-    .produk-card .harga {
-      color: #ff7b00;
+
+    .produk .harga {
+      color: #ff7e00;
       font-weight: bold;
-      margin-top: 5px;
     }
-    .produk-card .beli {
-      margin-top: 8px;
-      background: #ff7b00;
+
+    .produk button {
+      background: #ff7e00;
       color: white;
       border: none;
       border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      width: 35px;
+      height: 35px;
       font-size: 20px;
-      cursor: pointer;
+      margin-top: 5px;
     }
-    nav {
+
+    .bawah {
       position: fixed;
       bottom: 0;
-      left: 0;
-      right: 0;
+      width: 100%;
       background: white;
-      border-top: 1px solid #ddd;
       display: flex;
       justify-content: space-around;
+      box-shadow: 0 -2px 5px #ccc;
       padding: 10px 0;
     }
-    nav a {
-      text-align: center;
-      font-size: 12px;
-      color: #888;
-      text-decoration: none;
-    }
-    nav a.active {
-      color: #ff7b00;
-    }
-    .tambah-produk {
-      margin-top: 30px;
-      text-align: center;
-    }
-    .tambah-produk button {
-      padding: 10px 20px;
+
+    .bawah button {
+      background: none;
       border: none;
-      background: #ff7b00;
-      color: white;
-      font-weight: bold;
-      border-radius: 25px;
-      cursor: pointer;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    #form-produk {
+      padding: 20px;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Selamat Datang! <span>👋</span></h1>
-    <p>Mau makan apa hari ini?</p>
+    <div class="navbar">
+      <span class="logo">★ MakanEnak</span>
+    </div>
+    <div class="welcome">
+      <h2>Selamat Datang! <span>👋</span></h2>
+      <p>Mau makan apa hari ini?</p>
+    </div>
+    <input type="text" placeholder="Cari makanan favorit...">
+    <div class="kategori">
+      <button class="aktif">Semua</button>
+      <button>Sarapan</button>
+      <button>Makan Siang</button>
+    </div>
   </header>
 
-  <div class="search">
-    <input type="text" placeholder="Cari makanan favorit...">
-  </div>
+  <section class="produk-list" id="produk-list">
+    <!-- Produk akan ditambahkan dengan JS -->
+  </section>
 
-  <div class="kategori">
-    <h2>Kategori</h2>
-    <button class="active">Semua</button>
-    <button>Sarapan</button>
-    <button>Makan Siang</button>
-  </div>
-
-  <div class="promo">
-    <h2>Promo Spesial</h2>
-    <div class="card">
-      <p><strong>Diskon 30%</strong><br>Untuk pembelian pertama</p>
-      <button>Gunakan</button>
-    </div>
-  </div>
-
-  <div class="produk">
-    <h2>Menu Populer</h2>
-    <div class="produk-grid">
-      <div class="produk-card">
-        <img src="https://via.placeholder.com/150" alt="Makanan" />
-        <h3>Nasi Goreng Spesial</h3>
-        <p class="rating">⭐ 4.8 (120+)</p>
-        <p class="harga">Rp25.000</p>
-        <button class="beli">+</button>
-      </div>
-      <div class="produk-card">
-        <img src="https://via.placeholder.com/150" alt="Makanan" />
-        <h3>Ayam Bakar Madu</h3>
-        <p class="rating">⭐ 4.9 (200+)</p>
-        <p class="harga">Rp27.000</p>
-        <button class="beli">+</button>
-      </div>
-    </div>
-  </div>
-
-  <nav>
-    <a href="#" class="active">Beranda<br>🏠</a>
-    <a href="#">Cari<br>🔍</a>
-    <a href="#">Pesanan<br>🛍️</a>
-    <a href="#">Profil<br>👤</a>
+  <nav class="bawah">
+    <button onclick="navigate('beranda')">🏠<br>Beranda</button>
+    <button onclick="navigate('cari')">🔍<br>Cari</button>
+    <button onclick="navigate('pesanan')">🛍️<br>Pesanan</button>
+    <button onclick="navigate('profil')">👤<br>Profil</button>
   </nav>
 
-  <div class="tambah-produk">
-    <button>+ Tambah Produk</button>
-  </div>
+  <section id="form-produk" style="display:none;">
+    <h3>Tambah Produk</h3>
+    <input type="text" id="nama" placeholder="Nama Produk">
+    <input type="number" id="harga" placeholder="Harga">
+    <input type="text" id="gambar" placeholder="URL Gambar">
+    <button onclick="tambahProduk()">Tambah</button>
+  </section>
+
+  <script>
+    const daftarProduk = [
+      {
+        nama: "Nasi Goreng Spesial",
+        harga: 25000,
+        gambar: "https://via.placeholder.com/150",
+        rating: "4.8 (120+)"
+      },
+      {
+        nama: "Ayam Bakar Madu",
+        harga: 27000,
+        gambar: "https://via.placeholder.com/150",
+        rating: "4.9 (200+)"
+      }
+    ];
+
+    function tampilkanProduk() {
+      const container = document.getElementById("produk-list");
+      container.innerHTML = "";
+      daftarProduk.forEach(p => {
+        container.innerHTML += `
+          <div class="produk">
+            <img src="${p.gambar}" alt="${p.nama}">
+            <h4>${p.nama}</h4>
+            <small>⭐ ${p.rating}</small><br>
+            <span class="harga">Rp${p.harga.toLocaleString()}</span><br>
+            <button>+</button>
+          </div>
+        `;
+      });
+    }
+
+    function tambahProduk() {
+      const nama = document.getElementById("nama").value;
+      const harga = parseInt(document.getElementById("harga").value);
+      const gambar = document.getElementById("gambar").value;
+
+      if (nama && harga && gambar) {
+        daftarProduk.push({ nama, harga, gambar, rating: "Baru" });
+        tampilkanProduk();
+        alert("Produk ditambahkan!");
+      } else {
+        alert("Lengkapi semua field!");
+      }
+    }
+
+    function navigate(menu) {
+      document.getElementById("form-produk").style.display = (menu === 'profil') ? "block" : "none";
+    }
+
+    tampilkanProduk();
+  </script>
 </body>
-</html
+</html>
