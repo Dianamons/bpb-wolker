@@ -173,8 +173,6 @@
     .product-card button:hover {
       background: #e64a19;
     }
-
-    /* Bottom nav */
     .bottom-nav {
       position: fixed;
       left: 0; right: 0; bottom: 0;
@@ -203,7 +201,6 @@
       font-size: 1.46rem;
       margin-bottom: 2px;
     }
-
     /* Cart Modal & Checkout page */
     #cartModal, #checkoutPage, #notifPage {
       display:none; 
@@ -350,13 +347,11 @@
       margin:24px 0 14px 0;
       font-size:0.98rem;
     }
-
     @media (min-width: 700px) {
       .banner img { height: 180px;}
       .products { grid-template-columns: repeat(4, 1fr);}
       #cartModal .cart-modal-content, #checkoutPage .checkout-content, #notifPage .notif-content { min-width:380px;}
     }
-    /* Toast */
     .toast {
       position:fixed;
       bottom:70px;
@@ -376,7 +371,6 @@
       from { opacity:0; transform:translateX(-50%) translateY(20px);}
       to   { opacity:1; transform:translateX(-50%) translateY(0);}
     }
-    /* Modal backdrop for product detail */
     #productDetailModal {
       display:none; position:fixed; z-index:50; left:0;top:0;width:100vw;height:100vh;
       background:rgba(0,0,0,0.27); align-items:center; justify-content:center;
@@ -408,18 +402,11 @@
       <span class="notif-dot" id="notifDot" style="display:none"></span>
     </button>
   </div>
-
-  <!-- Banner -->
   <div class="banner">
     <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80" alt="Promo">
   </div>
-
-  <!-- Categories -->
   <div class="categories" id="categories"></div>
-
-  <!-- Product Grid -->
   <div class="products" id="products"></div>
-
   <!-- Product Detail Modal -->
   <div id="productDetailModal">
     <div class="detail-content">
@@ -431,7 +418,6 @@
       <button id="detailBuyBtn">Beli</button>
     </div>
   </div>
-
   <!-- Cart Modal -->
   <div id="cartModal">
     <div class="cart-modal-content">
@@ -442,7 +428,6 @@
       <button class="cart-checkout-btn" onclick="openCheckout()">Checkout</button>
     </div>
   </div>
-
   <!-- Checkout Page -->
   <div id="checkoutPage">
     <div class="checkout-content">
@@ -458,7 +443,6 @@
       <button class="checkout-pay-btn" onclick="payOrder()">Bayar</button>
     </div>
   </div>
-
   <!-- Notifikasi Page -->
   <div id="notifPage">
     <div class="notif-content">
@@ -468,7 +452,6 @@
       <div class="notif-empty" id="notifEmpty"></div>
     </div>
   </div>
-
   <!-- Bottom Navigation -->
   <div class="bottom-nav">
     <a href="#" class="nav-item active" id="navHome"><span>🏠</span>Home</a>
@@ -477,10 +460,8 @@
     <a href="#" class="nav-item" id="navCart"><span>🛒</span>Keranjang <span id="cartCount" style="font-size:0.82rem;color:var(--orange);"></span></a>
     <a href="#" class="nav-item" id="navAccount"><span>👤</span><span id="loginText">Akun</span></a>
   </div>
-
   <script>
     // ========== DATA ==========
-    // Kategori
     const categories = [
       { name: "Elektronik", icon: "💡" },
       { name: "Fashion", icon: "👗" },
@@ -491,7 +472,6 @@
       { name: "Ibu & Anak", icon: "🍼" },
       { name: "Lainnya", icon: "➕" }
     ];
-    // Produk
     const products = [
       {
         name: "Headphone Bluetooth",
@@ -642,7 +622,6 @@
         closeCheckout();
         return;
       }
-      // Simpan notifikasi pesanan
       let notif = JSON.parse(localStorage.getItem('notif') || '[]');
       notif.unshift({
         type: "order",
@@ -690,7 +669,6 @@
         };
       });
     }
-
     // ========== PRODUK ==========
     const prodContainer = document.getElementById("products");
     let searchQuery = '';
@@ -716,7 +694,6 @@
           </div>
         `;
       });
-      // Event untuk detail produk
       Array.from(prodContainer.getElementsByClassName('product-card')).forEach(card=>{
         card.onclick = function(e) {
           if (e.target.tagName.toLowerCase() === 'button') return;
@@ -725,13 +702,10 @@
         }
       });
     }
-
-    // ========== PENCARIAN ==========
     document.getElementById('searchInput').addEventListener('input', function(){
       searchQuery = this.value.trim().toLowerCase();
       renderProducts();
     });
-
     // ========== PRODUK DETAIL ==========
     function openProductDetail(product) {
       document.getElementById('detailImg').src = product.img;
@@ -747,7 +721,6 @@
     function closeProductDetail() {
       document.getElementById('productDetailModal').style.display = 'none';
     }
-
     // ========== NOTIFIKASI ==========
     function showNotifDot() {
       let notif = JSON.parse(localStorage.getItem('notif') || '[]');
@@ -760,7 +733,6 @@
     function openNotifPage(){
       renderNotifList();
       document.getElementById('notifPage').style.display = 'flex';
-      // Mark as read
       localStorage.setItem('notif', JSON.stringify([]));
       showNotifDot();
     }
@@ -789,7 +761,6 @@
         `;
       });
     }
-
     // ========== LOGIN/LOGOUT SEDERHANA ==========
     let user = JSON.parse(localStorage.getItem('user') || 'null');
     function updateLoginText() {
@@ -818,7 +789,6 @@
       loginLogout();
     };
     updateLoginText();
-
     // ========== BOTTOM NAV HIGHLIGHT & REDIRECT ==========
     document.getElementById('navHome').onclick = function(e){ e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'});};
     document.getElementById('navKategori').onclick = function(e){ e.preventDefault(); catContainer.scrollIntoView({behavior:'smooth'});};
@@ -830,8 +800,6 @@
       e.preventDefault();
       openCart();
     };
-
-    // ========== TOAST ==========
     function showToast(msg) {
       let t = document.createElement('div');
       t.textContent = msg;
@@ -839,12 +807,8 @@
       document.body.appendChild(t);
       setTimeout(()=>t.remove(), 1500);
     }
-
-    // ========== INIT ==========
     renderCategories();
     renderProducts();
-
-    // Tutup modal jika klik di luar konten modal
     window.onclick = function(e){
       let cartModal = document.getElementById('cartModal');
       let prodModal = document.getElementById('productDetailModal');
